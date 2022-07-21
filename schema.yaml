@@ -1,0 +1,286 @@
+title: "Terraform OCI Container Engine for Kubernetes (aka OCI OKE) with OCI Block Volume as PVC"
+description: "FoggyKitchen.com - Terraform OCI Container Engine for Kubernetes (aka OCI OKE) with OCI Block Volume as PVC."
+stackDescription: "FoggyKitchen.com - Terraform OKE Container Engine for Kubernetes (aka OCI OKE) with OCI Block Volume as PVC."
+schemaVersion: 1.1.0
+version: "20201028"
+locale: "en"
+
+variableGroups:
+- title: "General Configuration"
+  visible: false
+  variables:
+  - tenancy_ocid
+  - region
+  - instance_os
+  - linux_os_version
+  - oci_service_gateway
+  - network_cidrs
+
+- title: "Required Configuration"
+  visible: true  
+  variables:
+  - compartment_ocid
+  - availablity_domain_name
+  - node_pool_size
+  - show_advanced 
+
+- title: "OKE Optional Configuration"
+  visible: 
+      and:
+        - show_advanced
+  variables:
+  - kubernetes_version
+  - ssh_public_key
+  - shape
+  - flex_shape_memory
+  - flex_shape_ocpus
+  - cluster_name
+
+- title: "File Storage Service Configuration"
+  visible: 
+      and:
+        - show_advanced
+  variables:
+  - mount_target_ip_address
+  - file_storage_export_path
+
+
+- title: "Deployment Configuration"
+  visible: 
+      and:
+        - show_advanced
+  variables:
+  - pv_name  
+  - pv_size
+  - pvc_name
+  - pvc_size
+  - pod_name
+  - number_of_pods
+
+variables:
+
+  show_advanced:
+    type: boolean
+    title: "Show advanced options?"
+    description: "Shows advanced options."
+    visible: true
+    default: false
+
+  # General Configuration
+  tenancy_ocid:
+    title: "Tenancy ID"
+    description: "The Oracle Cloud Identifier (OCID) for your tenancy"
+    type: string
+    required: true
+    visibile: false
+
+  region:
+    title: "Region"
+    description: "Choose Region where you deploy your Webserver"
+    type: oci:identity:region:name
+    required: true
+    visibile: true
+
+  compartment_ocid:
+    title: "Compartment OCID"
+    description: "Choose Comparment where you deploy your Webserver"
+    type: oci:identity:compartment:id
+    required: true
+    visibile: true
+
+  availablity_domain_name:
+    type: oci:identity:availabilitydomain:name
+    required: true
+    visibile: true
+    title: "Availability Domain"
+    description: "Choose Availability Domain where OKE Nodes will be deployed."
+    dependsOn:
+      regionName: ${region}
+      compartmentId: ${compartment_ocid}
+
+  node_pool_size:
+    type: number
+    required: false
+    minimum: 1
+    maximum: 128
+    multipleOf: 1
+    default: 3
+    title: "How many K8S Nodes?"
+    description: "Choose number of K8S Nodes to be deployed."
+
+  # Optional Configuration
+
+  kubernetes_version:
+    type: enum
+    title: "K8S Version"
+    description: "Choose Kubernetes (K8S) version for OKE"
+    default: "v1.23.4"
+    required: false
+    enum: 
+      - "v1.23.4"
+      - "v1.22.5"
+      - "v1.20.11"
+      - "v1.20.8"
+
+  mount_target_ip_address:
+    type: string
+    required: false
+    title: "Mount Target IP Address"
+    description: "Choose Mount Target IP Address for FSS PVC to OKE."
+
+  file_storage_export_path:
+    type: string
+    required: false
+    title: "File Storage Export Path"
+    description: "File Storage Export Path."
+
+  pv_name:
+    type: string
+    title: "FSS PV Name"
+    description: "Choose FSS PV Name"
+    required: false
+
+  pv_size:
+    type: number
+    required: false
+    minimum: 1
+    maximum: 1024
+    multipleOf: 1
+    default: 100
+    title: "How big should be FSS PV in GB?"
+    description: "Choose number of GB for FSS PV."
+
+  pvc_name:
+    type: string
+    title: "FSS PVC Name"
+    description: "Choose FSS PVC Name"
+    required: false
+
+  pvc_size:
+    type: number
+    required: false
+    minimum: 1
+    maximum: 1024
+    multipleOf: 1
+    default: 100
+    title: "How big should be FSS PVC in GB?"
+    description: "Choose number of GB for FSS PVC."
+
+  pod_name:
+    type: string
+    title: "POD Name"
+    description: "Choose POD Name"
+    required: false
+
+  number_of_pods:
+    type: number
+    required: false
+    minimum: 1
+    maximum: 128
+    multipleOf: 1
+    default: 2
+    title: "How many NGINX PODS?"
+    description: "Choose number of NGINX PODS attached to FSS PVC to be deployed."
+
+  shape:
+    type: oci:core:instanceshape:name
+    title: "K8S Nodes Shape"
+    description: "Choose a shape for your K8S nodes"
+    default: "VM.Standard.E4.Flex"
+    required: false
+    dependsOn:
+      compartmentId: ${compartment_ocid}
+
+  flex_shape_ocpus:
+    type: number
+    required: false
+    minimum: 1
+    maximum: 128
+    multipleOf: 1
+    default: 2
+    title: "K8S Nodes Flex Shape OCPUs"
+    description: "Choose number of OCPUs for Flex Shape."
+    visible:
+      and:
+        - or:
+          - eq:
+            - shape 
+            - "VM.Standard.E3.Flex"
+          - eq:
+            - shape 
+            - "VM.Standard.E4.Flex"
+          - eq:
+            - shape 
+            - "VM.Standard.A1.Flex"
+          - eq:
+            - shape 
+            - "VM.Optimized3.Flex"
+
+  flex_shape_memory:
+    type: number
+    required: false
+    minimum: 1
+    maximum: 128
+    multipleOf: 1
+    default: 16
+    title: "K8S Nodes Flex Shape Memory (GB)"
+    description: "Choose number GB for Flex Shape Memory."
+    visible:
+      and:
+        - or:
+          - eq:
+            - shape 
+            - "VM.Standard.E3.Flex"
+          - eq:
+            - shape
+            - "VM.Standard.E4.Flex"
+          - eq:
+            - shape 
+            - "VM.Standard.A1.Flex"
+          - eq:
+            - shape 
+            - "VM.Optimized3.Flex"
+
+  ssh_public_key:
+    type: oci:core:ssh:publickey
+    title: "Public SSH Key"
+    description: "Choose public SSH Key to be uploaded into compute instances."
+    required: false
+
+  cluster_name:
+    type: string
+    title: "K8S Cluster Name"
+    description: "Choose K8S Cluster Name"
+    required: false
+
+  instance_os:
+    type: enum
+    required: false
+    visible: true
+    title: "Instance OS"
+    description: "Choose Operating System that determines the operating system for Webserver host."
+    default: "Oracle Linux"
+    enum:
+      - "Oracle Linux"
+
+  linux_os_version:
+    type: enum
+    required: false
+    visible: true
+    title: "Instance OS version"
+    description: "Choose Operating System version that determines the operating system version for Webserver host."
+    default: "7.9"
+    enum:
+      - "7.9"  
+
+outputs:
+
+  cluster_instruction:
+    title: "Post deployment instructions"
+    displayText: "Post deployment instructions."
+    type: string
+    visible: true
+  
+
+
+
