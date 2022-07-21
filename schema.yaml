@@ -1,6 +1,6 @@
-title: "Terraform OCI Container Engine for Kubernetes (aka OCI OKE) with OCI Block Volume as PVC"
-description: "FoggyKitchen.com - Terraform OCI Container Engine for Kubernetes (aka OCI OKE) with OCI Block Volume as PVC."
-stackDescription: "FoggyKitchen.com - Terraform OKE Container Engine for Kubernetes (aka OCI OKE) with OCI Block Volume as PVC."
+title: "Terraform OCI Container Engine for Kubernetes (aka OCI OKE) with OCI File Storage Service as PVC"
+description: "FoggyKitchen.com - Terraform OCI Container Engine for Kubernetes (aka OCI OKE) with OCI File Storage Service as PVC."
+stackDescription: "FoggyKitchen.com - Terraform OKE Container Engine for Kubernetes (aka OCI OKE) with OCI File Storage Service as PVC."
 schemaVersion: 1.1.0
 version: "20201028"
 locale: "en"
