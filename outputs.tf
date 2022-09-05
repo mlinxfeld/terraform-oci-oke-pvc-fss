@@ -10,13 +10,17 @@ $ oci ce cluster create-kubeconfig --region ${var.region} --cluster-id ${oci_con
 
 $ kubectl get pvc  
 
-4.  Obtain ${var.pod_name}1 POD description with attached PVC
+4.  Obtain PODs description with attached PVC
 
-$ kubectl describe pod ${var.pod_name}1
+$ kubectl get pods 
 
-5.  Access the POD to check the status of the mount
+5.  Pick up the first POD and check the status of the mount
 
-$ kubectl exec -it  ${var.pod_name}1 -- mount | grep ocifss
+$ kubectl exec -it <pod_taken_from_point4> -- mount | grep ocifss
+
+6.  Get services
+
+$ kubectl get services
 
 EOT
 }

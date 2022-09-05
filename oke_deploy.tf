@@ -14,6 +14,11 @@ resource "local_file" "nginx_deployment" {
   filename = "${path.module}/nginx${count.index+1}.yaml"
 }
 
+resource "local_file" "service_deployment" {
+  content  = data.template_file.service_deployment.rendered
+  filename = "${path.module}/service.yaml"
+}
+
 resource "null_resource" "deploy_oke_pv" {
   depends_on = [
   oci_containerengine_cluster.FoggyKitchenOKECluster, 
@@ -81,11 +86,34 @@ resource "null_resource" "deploy_oke_nginx" {
     command = "sleep 120"
   }
 
+}
+
+resource "null_resource" "deploy_oke_service" {
+  depends_on = [
+  oci_containerengine_cluster.FoggyKitchenOKECluster, 
+  oci_containerengine_node_pool.FoggyKitchenOKENodePool, 
+  local_file.nginx_deployment,
+  null_resource.deploy_oke_label_nodes,
+  null_resource.deploy_oke_nginx]
+
   provisioner "local-exec" {
-    command = "kubectl get pod ${var.pod_name}${count.index+1}"
+    command = "kubectl get pods"
   }
 
   provisioner "local-exec" {
-    command = "kubectl describe pod ${var.pod_name}${count.index+1}"
+    command = "kubectl apply -f ${local_file.service_deployment.filename}"
+  }
+
+  provisioner "local-exec" {
+    command = "sleep 30"
+  }
+
+  provisioner "local-exec" {
+    command = "kubectl get services"
+  }
+  
+  provisioner "local-exec" {
+    when    = destroy
+    command = "kubectl delete service lb-service"
   }
 }

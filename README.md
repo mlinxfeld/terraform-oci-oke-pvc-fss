@@ -190,10 +190,35 @@ Do you want to perform these actions?
 
 (...)
 
+oci_containerengine_cluster.FoggyKitchenOKECluster: Still creating... [11m0s elapsed]
+oci_containerengine_cluster.FoggyKitchenOKECluster: Still creating... [11m10s elapsed]
+oci_containerengine_cluster.FoggyKitchenOKECluster: Creation complete after 11m13s [id=ocid1.cluster.oc1.eu-frankfurt-1.aaaaaaaacau2elh6d26n5hygapnyyw6oaztsksv6vmaauclfgc4ml7s3jg5a]
+oci_containerengine_node_pool.FoggyKitchenOKENodePool: Creating...
+oci_containerengine_node_pool.FoggyKitchenOKENodePool: Still creating... [10s elapsed]
+oci_containerengine_node_pool.FoggyKitchenOKENodePool: Still creating... [20s elapsed]
+oci_containerengine_node_pool.FoggyKitchenOKENodePool: Still creating... [30s elapsed]
+oci_containerengine_node_pool.FoggyKitchenOKENodePool: Still creating... [40s elapsed]
+oci_containerengine_node_pool.FoggyKitchenOKENodePool: Still creating... [50s elapsed]
+oci_containerengine_node_pool.FoggyKitchenOKENodePool: Still creating... [1m0s elapsed]
+oci_containerengine_node_pool.FoggyKitchenOKENodePool: Still creating... [1m10s elapsed]
+oci_containerengine_node_pool.FoggyKitchenOKENodePool: Still creating... [1m20s elapsed]
+oci_containerengine_node_pool.FoggyKitchenOKENodePool: Still creating... [1m30s elapsed]
+oci_containerengine_node_pool.FoggyKitchenOKENodePool: Still creating... [1m40s elapsed]
+oci_containerengine_node_pool.FoggyKitchenOKENodePool: Still creating... [1m50s elapsed]
+oci_containerengine_node_pool.FoggyKitchenOKENodePool: Still creating... [2m0s elapsed]
+oci_containerengine_node_pool.FoggyKitchenOKENodePool: Still creating... [2m10s elapsed]
+oci_containerengine_node_pool.FoggyKitchenOKENodePool: Still creating... [2m20s elapsed]
+oci_containerengine_node_pool.FoggyKitchenOKENodePool: Still creating... [2m30s elapsed]
+oci_containerengine_node_pool.FoggyKitchenOKENodePool: Still creating... [2m40s elapsed]
+oci_containerengine_node_pool.FoggyKitchenOKENodePool: Still creating... [2m50s elapsed]
+oci_containerengine_node_pool.FoggyKitchenOKENodePool: Still creating... [3m0s elapsed]
+oci_containerengine_node_pool.FoggyKitchenOKENodePool: Still creating... [3m10s elapsed]
+oci_containerengine_node_pool.FoggyKitchenOKENodePool: Creation complete after 3m16s [id=ocid1.nodepool.oc1.eu-frankfurt-1.aaaaaaaazdmkcijpn7ttlbvsyepejqp2e77quugvez26fy7xpngm7b2uy24q]
+data.oci_containerengine_node_pool.FoggyKitchenOKENodePool: Reading...
 null_resource.deploy_oke_pv: Creating...
 null_resource.deploy_oke_pv: Provisioning with 'local-exec'...
-null_resource.deploy_oke_pv (local-exec): Executing: ["/bin/sh" "-c" "oci ce cluster create-kubeconfig --region eu-amsterdam-1 --cluster-id ocid1.cluster.oc1.eu-amsterdam-1.aaaaaaaajca7vbugck47q5d2ntlhs736rgto3zsygo6qldqihcofkeorw7za"]
-data.oci_containerengine_node_pool.FoggyKitchenOKENodePool: Read complete after 1s
+null_resource.deploy_oke_pv (local-exec): Executing: ["/bin/sh" "-c" "oci ce cluster create-kubeconfig --region eu-frankfurt-1 --cluster-id ocid1.cluster.oc1.eu-frankfurt-1.aaaaaaaacau2elh6d26n5hygapnyyw6oaztsksv6vmaauclfgc4ml7s3jg5a"]
+data.oci_containerengine_node_pool.FoggyKitchenOKENodePool: Read complete after 0s [id=ocid1.nodepool.oc1.eu-frankfurt-1.aaaaaaaazdmkcijpn7ttlbvsyepejqp2e77quugvez26fy7xpngm7b2uy24q]
 null_resource.deploy_oke_pv (local-exec): Existing Kubeconfig file found at /Users/lfeldman/.kube/config and new config merged into it
 null_resource.deploy_oke_pv: Provisioning with 'local-exec'...
 null_resource.deploy_oke_pv (local-exec): Executing: ["/bin/sh" "-c" "kubectl apply -f ./pv.yaml"]
@@ -201,7 +226,7 @@ null_resource.deploy_oke_pv (local-exec): persistentvolume/oke-fsspv created
 null_resource.deploy_oke_pv: Provisioning with 'local-exec'...
 null_resource.deploy_oke_pv (local-exec): Executing: ["/bin/sh" "-c" "sleep 10"]
 null_resource.deploy_oke_pv: Still creating... [10s elapsed]
-null_resource.deploy_oke_pv: Creation complete after 15s [id=4166025864633796750]
+null_resource.deploy_oke_pv: Creation complete after 16s [id=440495540540561325]
 null_resource.deploy_oke_pvc: Creating...
 null_resource.deploy_oke_pvc: Provisioning with 'local-exec'...
 null_resource.deploy_oke_pvc (local-exec): Executing: ["/bin/sh" "-c" "kubectl apply -f ./pvc.yaml"]
@@ -209,36 +234,40 @@ null_resource.deploy_oke_pvc (local-exec): persistentvolumeclaim/oke-fsspvc crea
 null_resource.deploy_oke_pvc: Provisioning with 'local-exec'...
 null_resource.deploy_oke_pvc (local-exec): Executing: ["/bin/sh" "-c" "sleep 10"]
 null_resource.deploy_oke_pvc: Still creating... [10s elapsed]
-null_resource.deploy_oke_pvc: Creation complete after 12s [id=2209075003132945347]
-null_resource.deploy_oke_label_nodes[0]: Creating...
+null_resource.deploy_oke_pvc: Creation complete after 12s [id=6379585312494342577]
 null_resource.deploy_oke_label_nodes[2]: Creating...
 null_resource.deploy_oke_label_nodes[1]: Creating...
+null_resource.deploy_oke_label_nodes[0]: Creating...
 null_resource.deploy_oke_label_nodes[0]: Provisioning with 'local-exec'...
-null_resource.deploy_oke_label_nodes[1]: Provisioning with 'local-exec'...
-null_resource.deploy_oke_label_nodes[0] (local-exec): Executing: ["/bin/sh" "-c" "kubectl label node 10.20.10.72 nodeName=node1"]
-null_resource.deploy_oke_label_nodes[1] (local-exec): Executing: ["/bin/sh" "-c" "kubectl label node 10.20.10.35 nodeName=node2"]
+null_resource.deploy_oke_label_nodes[0] (local-exec): Executing: ["/bin/sh" "-c" "kubectl label node 10.20.10.115 nodeName=node1"]
 null_resource.deploy_oke_label_nodes[2]: Provisioning with 'local-exec'...
-null_resource.deploy_oke_label_nodes[2] (local-exec): Executing: ["/bin/sh" "-c" "kubectl label node 10.20.10.226 nodeName=node3"]
-null_resource.deploy_oke_label_nodes[1] (local-exec): node/10.20.10.35 labeled
-null_resource.deploy_oke_label_nodes[1]: Creation complete after 1s [id=8375169184124232260]
-null_resource.deploy_oke_label_nodes[2] (local-exec): node/10.20.10.226 labeled
-null_resource.deploy_oke_label_nodes[0] (local-exec): node/10.20.10.72 labeled
-null_resource.deploy_oke_label_nodes[2]: Creation complete after 1s [id=2616073182794946583]
-null_resource.deploy_oke_label_nodes[0]: Creation complete after 1s [id=6462996193230728462]
-null_resource.deploy_oke_nginx[0]: Creating...
+null_resource.deploy_oke_label_nodes[2] (local-exec): Executing: ["/bin/sh" "-c" "kubectl label node 10.20.10.68 nodeName=node3"]
+null_resource.deploy_oke_label_nodes[1]: Provisioning with 'local-exec'...
+null_resource.deploy_oke_label_nodes[1] (local-exec): Executing: ["/bin/sh" "-c" "kubectl label node 10.20.10.193 nodeName=node2"]
+null_resource.deploy_oke_label_nodes[2] (local-exec): node/10.20.10.68 labeled
+null_resource.deploy_oke_label_nodes[1] (local-exec): node/10.20.10.193 labeled
+null_resource.deploy_oke_label_nodes[0] (local-exec): node/10.20.10.115 labeled
+null_resource.deploy_oke_label_nodes[2]: Creation complete after 1s [id=6928201747335760559]
+null_resource.deploy_oke_label_nodes[1]: Creation complete after 1s [id=7971506498721375158]
+null_resource.deploy_oke_label_nodes[0]: Creation complete after 1s [id=7554798630771137744]
+null_resource.deploy_oke_nginx[2]: Creating...
 null_resource.deploy_oke_nginx[1]: Creating...
-null_resource.deploy_oke_nginx[0]: Provisioning with 'local-exec'...
-null_resource.deploy_oke_nginx[0] (local-exec): Executing: ["/bin/sh" "-c" "kubectl apply -f ./nginx1.yaml"]
+null_resource.deploy_oke_nginx[0]: Creating...
+null_resource.deploy_oke_nginx[2]: Provisioning with 'local-exec'...
+null_resource.deploy_oke_nginx[2] (local-exec): Executing: ["/bin/sh" "-c" "kubectl apply -f ./nginx3.yaml"]
 null_resource.deploy_oke_nginx[1]: Provisioning with 'local-exec'...
 null_resource.deploy_oke_nginx[1] (local-exec): Executing: ["/bin/sh" "-c" "kubectl apply -f ./nginx2.yaml"]
-null_resource.deploy_oke_nginx[0] (local-exec): pod/oke-fsspod1 created
 null_resource.deploy_oke_nginx[0]: Provisioning with 'local-exec'...
-null_resource.deploy_oke_nginx[0] (local-exec): Executing: ["/bin/sh" "-c" "sleep 120"]
-null_resource.deploy_oke_nginx[1] (local-exec): pod/oke-fsspod2 created
+null_resource.deploy_oke_nginx[0] (local-exec): Executing: ["/bin/sh" "-c" "kubectl apply -f ./nginx1.yaml"]
+null_resource.deploy_oke_nginx[2] (local-exec): deployment.apps/oke-fsspod-node3-deployment created
+null_resource.deploy_oke_nginx[2]: Provisioning with 'local-exec'...
+null_resource.deploy_oke_nginx[2] (local-exec): Executing: ["/bin/sh" "-c" "sleep 120"]
+null_resource.deploy_oke_nginx[1] (local-exec): deployment.apps/oke-fsspod-node2-deployment created
 null_resource.deploy_oke_nginx[1]: Provisioning with 'local-exec'...
 null_resource.deploy_oke_nginx[1] (local-exec): Executing: ["/bin/sh" "-c" "sleep 120"]
-null_resource.deploy_oke_nginx[0]: Still creating... [10s elapsed]
-null_resource.deploy_oke_nginx[1]: Still creating... [10s elapsed]
+null_resource.deploy_oke_nginx[0] (local-exec): deployment.apps/oke-fsspod-node1-deployment created
+null_resource.deploy_oke_nginx[0]: Provisioning with 'local-exec'...
+null_resource.deploy_oke_nginx[0] (local-exec): Executing: ["/bin/sh" "-c" "sleep 120"]
 null_resource.deploy_oke_nginx[1]: Still creating... [20s elapsed]
 null_resource.deploy_oke_nginx[0]: Still creating... [20s elapsed]
 null_resource.deploy_oke_nginx[0]: Still creating... [30s elapsed]
@@ -261,154 +290,57 @@ null_resource.deploy_oke_nginx[0]: Still creating... [1m50s elapsed]
 null_resource.deploy_oke_nginx[1]: Still creating... [1m50s elapsed]
 null_resource.deploy_oke_nginx[1]: Still creating... [2m0s elapsed]
 null_resource.deploy_oke_nginx[0]: Still creating... [2m0s elapsed]
-null_resource.deploy_oke_nginx[0]: Provisioning with 'local-exec'...
-null_resource.deploy_oke_nginx[0] (local-exec): Executing: ["/bin/sh" "-c" "kubectl get pod oke-fsspod1"]
-null_resource.deploy_oke_nginx[1]: Provisioning with 'local-exec'...
-null_resource.deploy_oke_nginx[1] (local-exec): Executing: ["/bin/sh" "-c" "kubectl get pod oke-fsspod2"]
-null_resource.deploy_oke_nginx[1] (local-exec): NAME          READY   STATUS    RESTARTS   AGE
-null_resource.deploy_oke_nginx[1] (local-exec): oke-fsspod2   1/1     Running   0          2m1s
-null_resource.deploy_oke_nginx[0] (local-exec): NAME          READY   STATUS    RESTARTS   AGE
-null_resource.deploy_oke_nginx[0] (local-exec): oke-fsspod1   1/1     Running   0          2m1s
-null_resource.deploy_oke_nginx[1]: Provisioning with 'local-exec'...
-null_resource.deploy_oke_nginx[1] (local-exec): Executing: ["/bin/sh" "-c" "kubectl describe pod oke-fsspod2"]
-null_resource.deploy_oke_nginx[0]: Provisioning with 'local-exec'...
-null_resource.deploy_oke_nginx[0] (local-exec): Executing: ["/bin/sh" "-c" "kubectl describe pod oke-fsspod1"]
-null_resource.deploy_oke_nginx[1] (local-exec): Name:         oke-fsspod2
-null_resource.deploy_oke_nginx[1] (local-exec): Namespace:    default
-null_resource.deploy_oke_nginx[1] (local-exec): Priority:     0
-null_resource.deploy_oke_nginx[1] (local-exec): Node:         10.20.10.72/10.20.10.72
-null_resource.deploy_oke_nginx[1] (local-exec): Start Time:   Thu, 21 Jul 2022 14:47:54 +0200
-null_resource.deploy_oke_nginx[1] (local-exec): Labels:       <none>
-null_resource.deploy_oke_nginx[1] (local-exec): Annotations:  <none>
-null_resource.deploy_oke_nginx[1] (local-exec): Status:       Running
-null_resource.deploy_oke_nginx[1] (local-exec): IP:           10.244.1.3
-null_resource.deploy_oke_nginx[1] (local-exec): IPs:
-null_resource.deploy_oke_nginx[1] (local-exec):   IP:  10.244.1.3
-null_resource.deploy_oke_nginx[1] (local-exec): Containers:
-null_resource.deploy_oke_nginx[1] (local-exec):   web:
-null_resource.deploy_oke_nginx[1] (local-exec):     Container ID:   cri-o://4cfa056e5782d9e482506cb6eaef73ed779949dbe52370560ad7e5ca470b615f
-null_resource.deploy_oke_nginx[1] (local-exec):     Image:          nginx
-null_resource.deploy_oke_nginx[1] (local-exec):     Image ID:       docker.io/library/nginx@sha256:1761fb5661e4d77e107427d8012ad3a5955007d997e0f4a3d41acc9ff20467c7
-null_resource.deploy_oke_nginx[1] (local-exec):     Port:           80/TCP
-null_resource.deploy_oke_nginx[1] (local-exec):     Host Port:      0/TCP
-null_resource.deploy_oke_nginx[1] (local-exec):     State:          Running
-null_resource.deploy_oke_nginx[1] (local-exec):       Started:      Thu, 21 Jul 2022 14:48:03 +0200
-null_resource.deploy_oke_nginx[1] (local-exec):     Ready:          True
-null_resource.deploy_oke_nginx[1] (local-exec):     Restart Count:  0
-null_resource.deploy_oke_nginx[1] (local-exec):     Environment:    <none>
-null_resource.deploy_oke_nginx[1] (local-exec):     Mounts:
-null_resource.deploy_oke_nginx[1] (local-exec):       /usr/share/nginx/html/ from nfs (rw)
-null_resource.deploy_oke_nginx[1] (local-exec):       /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-p8hlw (ro)
-null_resource.deploy_oke_nginx[1] (local-exec): Conditions:
-null_resource.deploy_oke_nginx[1] (local-exec):   Type              Status
-null_resource.deploy_oke_nginx[1] (local-exec):   Initialized       True
-null_resource.deploy_oke_nginx[1] (local-exec):   Ready             True
-null_resource.deploy_oke_nginx[1] (local-exec):   ContainersReady   True
-null_resource.deploy_oke_nginx[1] (local-exec):   PodScheduled      True
-null_resource.deploy_oke_nginx[1] (local-exec): Volumes:
-null_resource.deploy_oke_nginx[1] (local-exec):   nfs:
-null_resource.deploy_oke_nginx[1] (local-exec):     Type:       PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
-null_resource.deploy_oke_nginx[1] (local-exec):     ClaimName:  oke-fsspvc
-null_resource.deploy_oke_nginx[1] (local-exec):     ReadOnly:   false
-null_resource.deploy_oke_nginx[1] (local-exec):   kube-api-access-p8hlw:
-null_resource.deploy_oke_nginx[1] (local-exec):     Type:                    Projected (a volume that contains injected data from multiple sources)
-null_resource.deploy_oke_nginx[1] (local-exec):     TokenExpirationSeconds:  3607
-null_resource.deploy_oke_nginx[1] (local-exec):     ConfigMapName:           kube-root-ca.crt
-null_resource.deploy_oke_nginx[1] (local-exec):     ConfigMapOptional:       <nil>
-null_resource.deploy_oke_nginx[1] (local-exec):     DownwardAPI:             true
-null_resource.deploy_oke_nginx[1] (local-exec): QoS Class:                   BestEffort
-null_resource.deploy_oke_nginx[1] (local-exec): Node-Selectors:              nodeName=node1
-null_resource.deploy_oke_nginx[1] (local-exec): Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
-null_resource.deploy_oke_nginx[1] (local-exec):                              node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
-null_resource.deploy_oke_nginx[1] (local-exec): Events:
-null_resource.deploy_oke_nginx[1] (local-exec):   Type    Reason     Age   From               Message
-null_resource.deploy_oke_nginx[1] (local-exec):   ----    ------     ----  ----               -------
-null_resource.deploy_oke_nginx[1] (local-exec):   Normal  Scheduled  2m2s  default-scheduler  Successfully assigned default/oke-fsspod2 to 10.20.10.72
-null_resource.deploy_oke_nginx[1] (local-exec):   Normal  Pulling    2m2s  kubelet            Pulling image "nginx"
-null_resource.deploy_oke_nginx[1] (local-exec):   Normal  Pulled     114s  kubelet            Successfully pulled image "nginx" in 7.40142325s
-null_resource.deploy_oke_nginx[1] (local-exec):   Normal  Created    114s  kubelet            Created container web
-null_resource.deploy_oke_nginx[1] (local-exec):   Normal  Started    114s  kubelet            Started container web
-null_resource.deploy_oke_nginx[1]: Creation complete after 2m4s [id=3078060483897453373]
-null_resource.deploy_oke_nginx[0] (local-exec): Name:         oke-fsspod1
-null_resource.deploy_oke_nginx[0] (local-exec): Namespace:    default
-null_resource.deploy_oke_nginx[0] (local-exec): Priority:     0
-null_resource.deploy_oke_nginx[0] (local-exec): Node:         10.20.10.72/10.20.10.72
-null_resource.deploy_oke_nginx[0] (local-exec): Start Time:   Thu, 21 Jul 2022 14:47:54 +0200
-null_resource.deploy_oke_nginx[0] (local-exec): Labels:       <none>
-null_resource.deploy_oke_nginx[0] (local-exec): Annotations:  <none>
-null_resource.deploy_oke_nginx[0] (local-exec): Status:       Running
-null_resource.deploy_oke_nginx[0] (local-exec): IP:           10.244.1.2
-null_resource.deploy_oke_nginx[0] (local-exec): IPs:
-null_resource.deploy_oke_nginx[0] (local-exec):   IP:  10.244.1.2
-null_resource.deploy_oke_nginx[0] (local-exec): Containers:
-null_resource.deploy_oke_nginx[0] (local-exec):   web:
-null_resource.deploy_oke_nginx[0] (local-exec):     Container ID:   cri-o://6fe14d88889d507ba3fc7d333eb82d82bf04f68d0751956d553a7b78c7374b80
-null_resource.deploy_oke_nginx[0] (local-exec):     Image:          nginx
-null_resource.deploy_oke_nginx[0] (local-exec):     Image ID:       docker.io/library/nginx@sha256:1761fb5661e4d77e107427d8012ad3a5955007d997e0f4a3d41acc9ff20467c7
-null_resource.deploy_oke_nginx[0] (local-exec):     Port:           80/TCP
-null_resource.deploy_oke_nginx[0] (local-exec):     Host Port:      0/TCP
-null_resource.deploy_oke_nginx[0] (local-exec):     State:          Running
-null_resource.deploy_oke_nginx[0] (local-exec):       Started:      Thu, 21 Jul 2022 14:48:03 +0200
-null_resource.deploy_oke_nginx[0] (local-exec):     Ready:          True
-null_resource.deploy_oke_nginx[0] (local-exec):     Restart Count:  0
-null_resource.deploy_oke_nginx[0] (local-exec):     Environment:    <none>
-null_resource.deploy_oke_nginx[0] (local-exec):     Mounts:
-null_resource.deploy_oke_nginx[0] (local-exec):       /usr/share/nginx/html/ from nfs (rw)
-null_resource.deploy_oke_nginx[0] (local-exec):       /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-64nq6 (ro)
-null_resource.deploy_oke_nginx[0] (local-exec): Conditions:
-null_resource.deploy_oke_nginx[0] (local-exec):   Type              Status
-null_resource.deploy_oke_nginx[0] (local-exec):   Initialized       True
-null_resource.deploy_oke_nginx[0] (local-exec):   Ready             True
-null_resource.deploy_oke_nginx[0] (local-exec):   ContainersReady   True
-null_resource.deploy_oke_nginx[0] (local-exec):   PodScheduled      True
-null_resource.deploy_oke_nginx[0] (local-exec): Volumes:
-null_resource.deploy_oke_nginx[0] (local-exec):   nfs:
-null_resource.deploy_oke_nginx[0] (local-exec):     Type:       PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
-null_resource.deploy_oke_nginx[0] (local-exec):     ClaimName:  oke-fsspvc
-null_resource.deploy_oke_nginx[0] (local-exec):     ReadOnly:   false
-null_resource.deploy_oke_nginx[0] (local-exec):   kube-api-access-64nq6:
-null_resource.deploy_oke_nginx[0] (local-exec):     Type:                    Projected (a volume that contains injected data from multiple sources)
-null_resource.deploy_oke_nginx[0] (local-exec):     TokenExpirationSeconds:  3607
-null_resource.deploy_oke_nginx[0] (local-exec):     ConfigMapName:           kube-root-ca.crt
-null_resource.deploy_oke_nginx[0] (local-exec):     ConfigMapOptional:       <nil>
-null_resource.deploy_oke_nginx[0] (local-exec):     DownwardAPI:             true
-null_resource.deploy_oke_nginx[0] (local-exec): QoS Class:                   BestEffort
-null_resource.deploy_oke_nginx[0] (local-exec): Node-Selectors:              nodeName=node1
-null_resource.deploy_oke_nginx[0] (local-exec): Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
-null_resource.deploy_oke_nginx[0] (local-exec):                              node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
-null_resource.deploy_oke_nginx[0] (local-exec): Events:
-null_resource.deploy_oke_nginx[0] (local-exec):   Type    Reason     Age   From               Message
-null_resource.deploy_oke_nginx[0] (local-exec):   ----    ------     ----  ----               -------
-null_resource.deploy_oke_nginx[0] (local-exec):   Normal  Scheduled  2m2s  default-scheduler  Successfully assigned default/oke-fsspod1 to 10.20.10.72
-null_resource.deploy_oke_nginx[0] (local-exec):   Normal  Pulling    2m2s  kubelet            Pulling image "nginx"
-null_resource.deploy_oke_nginx[0] (local-exec):   Normal  Pulled     114s  kubelet            Successfully pulled image "nginx" in 7.403005374s
-null_resource.deploy_oke_nginx[0] (local-exec):   Normal  Created    114s  kubelet            Created container web
-null_resource.deploy_oke_nginx[0] (local-exec):   Normal  Started    114s  kubelet            Started container web
-null_resource.deploy_oke_nginx[0]: Creation complete after 2m5s [id=9111388820890738827]
+null_resource.deploy_oke_nginx[2]: Still creating... [2m0s elapsed]
+null_resource.deploy_oke_nginx[0]: Still creating... [2m0s elapsed]
+null_resource.deploy_oke_nginx[2]: Creation complete after 2m1s [id=7206042879398093339]
+null_resource.deploy_oke_nginx[1]: Creation complete after 2m1s [id=2727263688535209465]
+null_resource.deploy_oke_nginx[0]: Creation complete after 2m2s [id=3551421080740761081]
+null_resource.deploy_oke_service: Creating...
+null_resource.deploy_oke_service: Provisioning with 'local-exec'...
+null_resource.deploy_oke_service (local-exec): Executing: ["/bin/sh" "-c" "kubectl get pods"]
+null_resource.deploy_oke_service (local-exec): NAME                                           READY   STATUS    RESTARTS   AGE
+null_resource.deploy_oke_service (local-exec): oke-fsspod-node1-deployment-54f54667f8-mrhm9   1/1     Running   0          2m
+null_resource.deploy_oke_service (local-exec): oke-fsspod-node2-deployment-d7c7c755d-jlnks    1/1     Running   0          2m1s
+null_resource.deploy_oke_service (local-exec): oke-fsspod-node3-deployment-7659786454-84jb7   1/1     Running   0          2m1s
+null_resource.deploy_oke_service: Provisioning with 'local-exec'...
+null_resource.deploy_oke_service (local-exec): Executing: ["/bin/sh" "-c" "kubectl apply -f ./service.yaml"]
+null_resource.deploy_oke_service (local-exec): service/lb-service created
+null_resource.deploy_oke_service: Provisioning with 'local-exec'...
+null_resource.deploy_oke_service (local-exec): Executing: ["/bin/sh" "-c" "sleep 30"]
+null_resource.deploy_oke_service: Still creating... [10s elapsed]
+null_resource.deploy_oke_service: Still creating... [20s elapsed]
+null_resource.deploy_oke_service: Still creating... [30s elapsed]
+null_resource.deploy_oke_service: Provisioning with 'local-exec'...
+null_resource.deploy_oke_service (local-exec): Executing: ["/bin/sh" "-c" "kubectl get services"]
+null_resource.deploy_oke_service (local-exec): NAME         TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)             AGE
+null_resource.deploy_oke_service (local-exec): kubernetes   ClusterIP      10.96.0.1       <none>        443/TCP,12250/TCP   10m
+null_resource.deploy_oke_service (local-exec): lb-service   LoadBalancer   10.96.217.150   132.226.201.6   80:30535/TCP        31s
+null_resource.deploy_oke_service: Creation complete after 34s [id=5367755030027232668]
 
-Apply complete! Resources: 34 added, 0 changed, 0 destroyed.
+Apply complete! Resources: 40 added, 0 changed, 0 destroyed.
 
 Outputs:
-
-cluster_instruction = <<EOT
 1.  Open OCI Cloud Shell.
 
 2.  Execute below command to setup OKE cluster access:
 
-$ oci ce cluster create-kubeconfig --region eu-amsterdam-1 --cluster-id ocid1.cluster.oc1.eu-amsterdam-1.aaaaaaaajca7vbugck47q5d2ntlhs736rgto3zsygo6qldqihcofkeorw7za
+$ oci ce cluster create-kubeconfig --region eu-frankfurt-1 --cluster-id ocid1.cluster.oc1.eu-frankfurt-1.aaaaaaaacau2elh6d26n5hygapnyyw6oaztsksv6vmaauclfgc4ml7s3jg5a
 
 3.  Obtain the PVC created by the automation
 
 $ kubectl get pvc
 
-4.  Obtain oke-fsspod1 POD description with attached PVC
+4.  Obtain PODs description with attached PVC
 
-$ kubectl describe pod oke-fsspod1
+$ kubectl get pods
 
-5.  Access the POD to check the status of the mount
+5.  Pick up the first POD and check the status of the mount
 
-$ kubectl exec -it  oke-fsspod1 -- mount | grep ocifss
+$ kubectl exec -it <pod_taken_from_point4> -- mount | grep ocifss
 
+6.  Get services
+
+$ kubectl get services
 
 EOT
 ```
@@ -436,5 +368,5 @@ oci_core_virtual_network.FoggyKitchenVCN: Destruction complete after 1s
 oci_identity_compartment.FoggyKitchenCompartment: Destroying... [id=ocid1.compartment.oc1..aaaaaaaayxvhhjidfxsq35muvshgxv62ac2mn6mi2yo2xqzsq53jgkuozfwq]
 oci_identity_compartment.FoggyKitchenCompartment: Destruction complete after 0s
 
-Destroy complete! Resources: 34 destroyed.
+Destroy complete! Resources: 40 destroyed.
 ```

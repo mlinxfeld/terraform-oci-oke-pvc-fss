@@ -65,7 +65,22 @@ data "template_file" "nginx_deployment" {
   count    = var.number_of_pods
   template = "${file("${path.module}/templates/nginx.template.yaml")}"
   vars     = {
-      pvc_name = var.pvc_name
-      pod_name = "${var.pod_name}${count.index+1}"
+      pvc_name                = var.pvc_name
+      pod_name                = "${var.pod_name}"
+      number_of_pods_replicas = var.number_of_pods_replicas
+      node_index              = "${(count.index % 3) + 1}"
+  }
+}
+
+data "template_file" "service_deployment" {
+
+  template = "${file("${path.module}/templates/service.template.yaml")}"
+  vars     = {
+      lb_shape          = var.lb_shape
+      flex_lb_min_shape = var.flex_lb_min_shape 
+      flex_lb_max_shape = var.flex_lb_max_shape  
+      lb_listener_port  = var.lb_listener_port
+      lb_nsg            = var.lb_nsg
+      lb_nsg_id         = var.lb_nsg ? oci_core_network_security_group.FoggyKitchenOKELBSecurityGroup[0].id : ""
   }
 }

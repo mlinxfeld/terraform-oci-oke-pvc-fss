@@ -28,6 +28,9 @@ locals {
   fss_port_2                              = "2048"
   fss_port_3                              = "2049"
   fss_port_4                              = "2050"
+  oke_nodes_min_port                      = "30000"
+  oke_nodes_max_port                      = "32767"
+  lb_listener_port                        = var.lb_listener_port == "" ? "80" : var.lb_listener_port
   
   all_sources                = data.oci_containerengine_node_pool_option.FoggyKitchenOKEClusterNodePoolOption.sources
   arm_node_shape             = local.is_arm_node_shape ? "aarch64-" : ""
