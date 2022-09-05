@@ -34,6 +34,11 @@ variableGroups:
   - flex_shape_ocpus
   - oke_node_os_version
   - cluster_name
+  - lb_shape
+  - flex_lb_min_shape
+  - flex_lb_max_shape
+  - lb_listener_port
+  - lb_nsg
 
 - title: "File Storage Service Configuration"
   visible: 
@@ -55,6 +60,7 @@ variableGroups:
   - pvc_size
   - pod_name
   - number_of_pods
+  - number_of_pod_replicas
 
 variables:
 
@@ -176,9 +182,19 @@ variables:
     minimum: 1
     maximum: 128
     multipleOf: 1
-    default: 2
+    default: 3
     title: "How many NGINX PODS?"
     description: "Choose number of NGINX PODS attached to FSS PVC to be deployed."
+
+  number_of_pod_replicas:
+    type: number
+    required: false
+    minimum: 1
+    maximum: 128
+    multipleOf: 1
+    default: 1
+    title: "How many NGINX POD replicas?"
+    description: "Choose number of NGINX POD replicas attached to FSS PVC to be deployed."
 
   oke_node_shape:
     type: oci:core:instanceshape:name
@@ -262,6 +278,73 @@ variables:
       - "7.9"  
       - "8.5"
       - "8.6"
+
+  lb_shape:
+    type: enum
+    title: "LoadBalancer Shape"
+    description: "Choose LoadBalancer Shape"
+    default: "flexible"
+    required: false 
+    enum:
+      - "flexible"
+      - "100Mbps"
+      - "10Mbps"
+      - "10Mbps-Micro"
+      - "400Mbps"
+      - "8000Mbps"
+
+  flex_lb_min_shape:
+    type: enum
+    required: false
+    default: "10"
+    title: "LB Flex Min Shape"
+    description: "Choose Minimum Shape for Flex Load Balancer."
+    enum:
+      - "10"
+      - "100"
+      - "1000"
+      - "400"
+      - "8000"
+    visible:
+      and:
+        - eq:
+          - lb_shape 
+          - "flexible"
+
+  flex_lb_max_shape:
+    type: enum
+    required: false
+    default: "100"
+    title: "LB Flex Max Shape"
+    description: "Choose Maximum Shape for Flex Load Balancer."
+    enum:
+      - "10"
+      - "100"
+      - "1000"
+      - "400"
+      - "8000"
+    visible:
+      and:
+        - eq:
+          - lb_shape 
+          - "flexible"
+
+  lb_listener_port:
+    type: number
+    required: false
+    minimum: 1
+    maximum: 65563
+    multipleOf: 1
+    default: 80
+    title: "Load Balancer Listener Port"
+    description: "Choose Load Balancer Listener Port."
+
+  lb_nsg:
+    type: boolean
+    title: "Usg NSG instead of Security List for OKE Load Balancer?"
+    description: "Check if you want to use Network Security Group for OKE Load Balancer instead of Security List."
+    visible: true
+    default: true
 
 outputs:
 

@@ -60,11 +60,35 @@ variable "pvc_name" {
 }
 
 variable "number_of_pods" {
-  default = 2
+  default = 3
+}
+
+variable "number_of_pods_replicas" {
+  default = 1
 }
 
 variable "pod_name" {
   default = "oke-fsspod"
+}
+
+variable "lb_shape" {
+  default = "flexible"
+}
+
+variable "flex_lb_min_shape" {
+  default = 10
+}
+
+variable "flex_lb_max_shape" {
+  default = 100
+}
+
+variable "lb_listener_port" {
+  default = 80
+}
+
+variable "lb_nsg" {
+  default = true
 }
 
 variable "network_cidrs" {
