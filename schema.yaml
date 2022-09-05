@@ -60,7 +60,7 @@ variableGroups:
   - pvc_size
   - pod_name
   - number_of_pods
-  - number_of_pod_replicas
+  - number_of_pods_replicas
 
 variables:
 
@@ -186,7 +186,7 @@ variables:
     title: "How many NGINX PODS?"
     description: "Choose number of NGINX PODS attached to FSS PVC to be deployed."
 
-  number_of_pod_replicas:
+  number_of_pods_replicas:
     type: number
     required: false
     minimum: 1
