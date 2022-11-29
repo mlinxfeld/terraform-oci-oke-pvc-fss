@@ -28,3 +28,4 @@ spec:
           readOnly: false
       nodeSelector:
         nodeName: node${node_index}
+        ${ is_arm_node_shape ? "kubernetes.io/arch: arm64" : "" }
