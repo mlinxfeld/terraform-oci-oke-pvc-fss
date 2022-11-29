@@ -69,6 +69,7 @@ data "template_file" "nginx_deployment" {
       pod_name                = "${var.pod_name}"
       number_of_pods_replicas = var.number_of_pods_replicas
       node_index              = "${(count.index % 3) + 1}"
+      is_arm_node_shape       = local.is_arm_node_shape
   }
 }
 
